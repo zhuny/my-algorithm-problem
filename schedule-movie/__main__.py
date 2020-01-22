@@ -128,8 +128,9 @@ if __name__ == '__main__':
     run(24, 10, 4, [0, 7, 14], 2)
 
     def generate_random():
-        N = 1_000_000_000 - 3_000_000
-        gen = [random.randint(0, N) for i in range(20000)]
+        N = 1_000_000_000 - 100_000
+        gen = {random.randint(0, N) for i in range(20000)}
+        gen = list(gen)
         gen.sort()
         return gen
 
