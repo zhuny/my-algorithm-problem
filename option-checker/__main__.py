@@ -1,7 +1,8 @@
 from typing import List
 
 
-def is_valid_price(lower_bound, upper_bound, representative, option_price_list):
+def is_valid_price(lower_bound: int, upper_bound: int, representative: int,
+                   option_price_list: List[int]):
     for option in option_price_list:
         if option*100 < lower_bound*representative:
             return False
@@ -11,7 +12,7 @@ def is_valid_price(lower_bound, upper_bound, representative, option_price_list):
 
 
 def solution_small(lower_bound: int, upper_bound: int,
-                   option_price_list: List[int]):
+                   option_price_list: List[int]) -> int:
     count = 0
     for price in option_price_list:
         if is_valid_price(lower_bound, upper_bound, price, option_price_list):
@@ -20,7 +21,7 @@ def solution_small(lower_bound: int, upper_bound: int,
 
 
 def solution_large(lower_bound: int, upper_bound: int,
-                   option_price_list: List[int]):
+                   option_price_list: List[int]) -> int:
     min_price = min(option_price_list)
     max_price = max(option_price_list)
     count = 0
