@@ -19,5 +19,18 @@ def solution_slow(lower_bound: int, upper_bound: int,
     return count
 
 
+def solution_fast(lower_bound: int, upper_bound: int,
+                  option_price_list: List[int]):
+    min_price = min(option_price_list)
+    max_price = max(option_price_list)
+    count = 0
+    for price in option_price_list:
+        if price*lower_bound <= min_price*100:
+            if max_price*100 <= price*upper_bound:
+                count += 1
+    return count
+
+
 if __name__ == '__main__':
     assert solution_slow(80, 150, [85, 100, 140]) == 1
+    assert solution_fast(80, 150, [85, 100, 140]) == 1
