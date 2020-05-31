@@ -10,8 +10,8 @@ def is_valid_price(lower_bound, upper_bound, representative, option_price_list):
     return True
 
 
-def solution_slow(lower_bound: int, upper_bound: int,
-                  option_price_list: List[int]):
+def solution_small(lower_bound: int, upper_bound: int,
+                   option_price_list: List[int]):
     count = 0
     for price in option_price_list:
         if is_valid_price(lower_bound, upper_bound, price, option_price_list):
@@ -19,8 +19,8 @@ def solution_slow(lower_bound: int, upper_bound: int,
     return count
 
 
-def solution_fast(lower_bound: int, upper_bound: int,
-                  option_price_list: List[int]):
+def solution_large(lower_bound: int, upper_bound: int,
+                   option_price_list: List[int]):
     min_price = min(option_price_list)
     max_price = max(option_price_list)
     count = 0
@@ -32,5 +32,5 @@ def solution_fast(lower_bound: int, upper_bound: int,
 
 
 if __name__ == '__main__':
-    assert solution_slow(80, 150, [85, 100, 140]) == 1
-    assert solution_fast(80, 150, [85, 100, 140]) == 1
+    assert solution_small(80, 150, [85, 100, 140]) == 1
+    assert solution_large(80, 150, [85, 100, 140]) == 1
