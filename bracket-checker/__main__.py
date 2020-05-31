@@ -1,25 +1,28 @@
-def solution_test_set1(string: str):
+def solution(string: str):
     stack = []
     pair = {
         '(': ')',
         '{': '}',
         '[': ']',
-        '<': '>'
+        '<': '>',
+        '"': '"',
+        "'": "'"
     }
     stream = []
     prev_pop = False
     for char in string:
-        if char in pair:
-            stack.append(pair[char])
-            stream.append(char)
-            prev_pop = False
-        elif len(stack) == 0 or stack[-1] != char:
-            return ""
-        else:
+        if stack and stack[-1] == char:
             if not prev_pop:
                 stream.append(str(len(stack)))
-            stream.append(stack.pop())
+            stack.pop()
+            stream.append(char)
             prev_pop = True
+        elif char in pair:
+            stream.append(char)
+            stack.append(pair[char])
+            prev_pop = False
+        else:
+            return ""
 
     if len(stack) == 0:
         return "".join(stream)
@@ -28,6 +31,7 @@ def solution_test_set1(string: str):
 
 
 if __name__ == '__main__':
-    print(solution_test_set1("({[]})()[[]]"))
-    print(solution_test_set1("({[]})()[[]"))
-    print(solution_test_set1("({[]})(]"))
+    print(solution("({[]})()[[]]"))
+    print(solution("({[]})()[[]"))
+    print(solution("({[]})(]"))
+    print(solution("'([]({{}})'')'"))
