@@ -5,3 +5,4 @@
 1. [영화 많이 보기](schedule-movie)
 1. [테트로미노](fill-with-tetromino)
 1. [대표 옵션 확인하기](option-checker)
+1. [괄호 확인](bracket-checker)
